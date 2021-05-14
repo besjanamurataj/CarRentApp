@@ -1,10 +1,33 @@
+import { PageNotFoundComponent } from './layout/page-not-found/page-not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './account/login/login.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'car',
+    loadChildren: () =>
+      import('./components/car/car.module').then((m) => m.CarModule),
+  },
+  {
+    path: 'model',
+    loadChildren: () =>
+      import('./components/model/modal.module').then((m) => m.ModalModule),
+  },
+  {
+    path: 'fulltype',
+    loadChildren: () =>
+      import('./components/fuel-type/fuel-type.module').then(
+        (m) => m.FuelTypeModule
+      ),
+  },
+  {path:'login',component:LoginComponent},
+  {path:'', redirectTo:'/login', pathMatch:'full'},
+  {path:'**', component:PageNotFoundComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

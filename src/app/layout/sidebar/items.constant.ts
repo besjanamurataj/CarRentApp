@@ -2,7 +2,7 @@ import { SidebarItems } from "./sidebar-item";
 
 export const items:Array<SidebarItems> =[
    {
-     link:'',
+     link:'login',
      label:'Dashboard'
    },
    {

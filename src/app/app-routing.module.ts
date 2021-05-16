@@ -3,27 +3,29 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './account/login/login.component';
 
+
 const routes: Routes = [
   {
-    path: 'car',
+      path: 'car',
     loadChildren: () =>
-      import('./components/car/car.module').then((m) => m.CarModule),
-  },
-  {
-    path: 'model',
+       import('./components/car/car.module').then(m => m.CarModule)
+    },
+   {
+     path: 'model',
     loadChildren: () =>
-      import('./components/model/modal.module').then((m) => m.ModalModule),
-  },
+     import('./components/model/model.module').then((m) => m.ModelModule),
+ },
   {
-    path: 'fulltype',
+    path: 'fueltype',
     loadChildren: () =>
       import('./components/fuel-type/fuel-type.module').then(
         (m) => m.FuelTypeModule
       ),
   },
-  {path:'login',component:LoginComponent},
-  {path:'', redirectTo:'/login', pathMatch:'full'},
-  {path:'**', component:PageNotFoundComponent}
+  
+  { path: 'login',component:LoginComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

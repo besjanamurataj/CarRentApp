@@ -11,5 +11,4 @@ export interface Car{
   carLocation:string;
   description:string;
 
-
 }

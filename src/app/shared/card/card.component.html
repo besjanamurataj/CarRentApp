@@ -1,8 +1,12 @@
-<div class="card mt-4" >
-  <div class="card-header">
-    {{title}}
+<div class="container">
+  <div class="col d-flex justify-content-center">
+    <div class="card mt-4" style="width: 700px">
+      <div class="card-header">
+        {{ title }}
+      </div>
+      <div class="card-body">
+        <ng-content></ng-content>
+      </div>
+    </div>
   </div>
-  <div class="card-body ">
-    <ng-content></ng-content>
-   </div>
 </div>

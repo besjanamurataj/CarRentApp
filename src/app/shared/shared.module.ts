@@ -11,6 +11,7 @@ import { ListComponent } from './list/list.component';
   declarations: [ConfirmationComponent,ToastrComponent,CardComponent, ListComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports:[CardComponent]
 })
 export class SharedModule { }

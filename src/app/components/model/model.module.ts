@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ModelRoutingModule } from './model-routing.module';
 import { AddEditModelComponent } from './add-edit-model/add-edit-model.component';
 import { LayoutComponent } from './layout/layout.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { LayoutComponent } from './layout/layout.component';
   imports: [
     CommonModule,
     ModelRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class ModelModule { }

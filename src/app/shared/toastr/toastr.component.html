@@ -1,1 +1,9 @@
-<p>toastr works!</p>
+<div id="toast-container" class="toast-bottom-right" *ngIf="notification">
+  <div class="toast" [ngClass]="cssClass(notification)" aria-live="polite">
+      <button type="button" class="toast-close-button" role="button" (click)="removeNotification()">×</button>
+      <div class="toast-message">
+          {{notification.message}}
+      </div>
+  </div>
+</div>
+

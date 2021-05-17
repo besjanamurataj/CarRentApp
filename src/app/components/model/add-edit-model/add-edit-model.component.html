@@ -1,22 +1,44 @@
 
-<div class="container">
-    <app-card title="Add a Car">
-      <div class="container">
-    <form action="">
-      <div class="row">
-          <div class="col-sm-4">
-              <label for=""> Enter a number </label>
-                <input required name="name"  type="text" class="form-control"
-                id="name">
-          </div>
-          <div class="col-sm-4">
-           <label for=""> Enter a number </label>
-             <input required name="name"  type="text" class="form-control"
-             id="name">
-      </div>
-      </div>
-    </form>
-    </div>
-    </app-card>
-    </div>
+  <app-card title="Add a Model">
+    <div class="container">
+      <form action="" [formGroup] ="modelForm">
 
+
+            <label for=""> Enter a name </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+            />
+            <div
+            *ngIf="name.invalid && (name.dirty || name.touched)"
+            class="text-danger"
+          >
+            <div *ngIf="name.errors.required"> CarNumber is required.</div>
+          </div>
+
+            <label for=""> Enter a brand </label>
+            <input
+               formControlName="brand"
+              type="text"
+              class="form-control"
+
+            />
+            <div
+            *ngIf="brand.invalid && (brand.dirty || brand.touched)"
+            class="text-danger"
+          >
+            <div *ngIf="brand.errors.required"> CarNumber is required.</div>
+          </div>
+
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <button class="btn btn-secondary" routerLink ="/model">Cancel</button>
+              <button class="btn btn-primary"> Save</button>
+            </div>
+          </div>
+
+      </form>
+    </div>
+  </app-card>

@@ -1,3 +1,15 @@
-button {
-    float:right,
+.col-md-12 {
+  text-align: right;
+}
+button.btn.btn-secondary {
+  margin-right: 12px;
+}
+
+ label{
+  text-align: center;
+  color:black;
+  font-size: medium;
+  font-family:Arial, Helvetica, sans-serif;
+  padding: 5px;
+
 }

@@ -1,141 +1,185 @@
 <div class="container">
   <app-card title="Add or edit a Car">
     <div class="container">
-      <form action="">
+      <form [formGroup]="carForm">
         <div class="row">
           <div class="col-sm-4">
-            <label for=""> Enter a carNumber </label>
+            <label for="" class="form-label"> Enter a CarNumber </label>
             <input
-              required
-              name="name"
               type="text"
               class="form-control"
-              id="name"
+              formControlName="carNumbers"
+              autocomplete="off"
             />
+             <div
+            *ngIf="carNumbers.invalid && (carNumbers.dirty || carNumbers.touched)"
+            class="text-danger"
+          >
+            <div *ngIf="carNumbers.errors.required"> CarNumber is required.</div>
+          </div>
           </div>
           <div class="col-sm-4">
-            <label for=""> Enter a brand
-            </label>
+            <label for="" class="form-label"> Enter a brand </label>
             <input
-              required
-              name="name"
-              type="text"
               class="form-control"
-              id="name"
+              formControlName="brand"
             />
+            <div
+            *ngIf="brand.invalid && (brand.dirty || brand.touched)"
+            class="text-danger"
+          >
+            <div *ngIf="brand.errors.required"> Brand is required.</div>
+          </div>
           </div>
           <div class="col-sm-4">
-            <label for=""> Enter a fuelType</label>
-            <select name="" required  class="form-control"
-            id="category">
-            <option selected disabled value="">Choose...</option>
-            <option></option>
-          </select>
+            <label for="" class="form-label"> Enter a fuelType</label>
+            <select name="" class="form-control" id="category">
+              <option selected disabled value="">Choose...</option>
+              <option></option>
+            </select>
           </div>
         </div>
 
         <div class="row">
           <div class="col-sm-4">
-            <label for=""> Enter a number </label>
-            <input
-              required
-              name="name"
-              type="text"
-              class="form-control"
-              id="name"
-            />
-          </div>
-          <div class="col-sm-4">
-            <label for=""> Enter a model</label>
-            <input
-              required
-              name="name"
-              type="text"
-              class="form-control"
-              id="name"
-            />
-          </div>
-          <div class="col-sm-4">
-            <label for=""> Enter a transmisionType</label>
-            <input
-              required
-              name="name"
-              type="text"
-              class="form-control"
-              id="name"
-            />
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-4">
-            <label for=""> Enter a numberOfDoors </label>
-            <input
-              required
-              name="name"
-              type="text"
-              class="form-control"
-              id="name"
-            />
-          </div>
-          <div class="col-sm-4">
-            <label for=""> Enter a carCapacity</label>
-            <input
-              required
-              name="name"
-              type="text"
-              class="form-control"
-              id="name"
-            />
-          </div>
-          <div class="col-sm-4">
-            <label for=""> Enter a carColor</label>
-            <input
-              required
-              name="name"
-              type="text"
-              class="form-control"
-              id="name"
-            />
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-4">
-            <label for=""> Enter a priceForDay</label>
-            <input
-              required
-              name="name"
-              type="text"
-              class="form-control"
-              id="name"
-            />
-          </div>
-          <div class="col-sm-4">
-            <label for=""> Enter a CarLocation</label>
-            <input
-              required
-              name="name"
-              type="text"
-              class="form-control"
-              id="name"
-            />
-          </div>
-          <div class="col-sm-4">
-            <label for=""> Enter a Description</label>
-            <input
-              required
-              name="description"
-              type="text"
-              class="form-control"
-              id="name"
-            />
-          </div>
-          <div class="row">
-            <div class="col-md-12 bg-light text-right">
-              <button class="btn btn-secondary " routerLink ="/car">Cancel</button>
-              <button class="btn btn-primary "> Save</button>
+            <label for="" class="form-label"> Enter a number </label>
+            <input class="form-control" formControlName="number" />
+           <div
+              *ngIf="number.invalid && (number.dirty || number.touched)"
+              class="text-danger"
+            >
+               <div *ngIf="number.errors.required">Number is required.</div>
             </div>
+          </div>
+
+          <div class="col-sm-4">
+            <label for="" class="form-label"> Enter a model</label>
+            <input
+              class="form-control"
+              formControlName="model"
+            />
+            <div
+            *ngIf="model.invalid && (model.dirty || model.touched)"
+            class="text-danger"
+          >
+             <div *ngIf="model.errors.required">Model is required.</div>
+          </div>
+          </div>
+
+          <div class="col-sm-4">
+            <label for="" class="form-label"> Enter a transmisionType</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="transmisionType"
+            />
+             <div
+            *ngIf="transmisionType.invalid && (transmisionType.dirty || transmisionType.touched)"
+            class="text-danger"
+          >
+             <div *ngIf="transmisionType.errors.required">TransmisionType is required.</div>
+          </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4">
+            <label for="" class="form-label"> Enter a numberOfDoors </label>
+            <input
+
+              type="text"
+              class="form-control"
+
+              formControlName="numberOfDoors"
+            />
+            <div
+            *ngIf="numberOfDoors.invalid && (numberOfDoors.dirty || numberOfDoors.touched)"
+            class="text-danger"
+          >
+             <div *ngIf="numberOfDoors.errors.required">Number is required.</div>
+          </div>
+          </div>
+
+          <div class="col-sm-4">
+            <label for="" class="form-label"> Enter a carCapacity</label>
+            <input
+
+              type="text"
+              class="form-control"
+
+              formControlName="carCapacity"
+            />
+            <div
+            *ngIf="carCapacity.invalid && (carCapacity.dirty || carCapacity.touched)"
+            class="text-danger"
+          >
+             <div *ngIf="carCapacity.errors.required">CarCapacity is required.</div>
+          </div>
+
+          </div>
+          <div class="col-sm-4">
+            <label for="" class="form-label"> Enter a carColor</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="carColor"
+            />
+            <div
+            *ngIf="carColor.invalid && (carColor.dirty || carColor.touched)"
+            class="text-danger"
+          >
+             <div *ngIf="carColor.errors.required">CarColor is required.</div>
+          </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4">
+            <label for="" class="form-label"> Enter a priceForDay</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="priceForDay"
+            />
+            <div
+            *ngIf="priceForDay.invalid && (priceForDay.dirty || priceForDay.touched)"
+            class="text-danger"
+          >
+             <div *ngIf="priceForDay.errors.required">CarColor is required.</div>
+          </div>
+          </div>
+
+          <div class="col-sm-4">
+            <label for="" class="form-label"> Enter a CarLocation</label>
+            <input
+
+              type="text"
+              class="form-control"
+              formControlName="carLocation"
+            />
+            <div
+            *ngIf="carLocation.invalid && (carLocation.dirty || carLocation.touched)"
+            class="text-danger"
+          >
+             <div *ngIf="carLocation.errors.required">CarLocation is required.</div>
+          </div>
+
+          </div>
+          <div class="col-sm-4">
+            <label for="" class="form-label"> Enter a Description</label>
+            <input
+              type="text"
+              class="form-control"
+
+              formControlName="description"
+            />
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-md-12">
+            <button class="btn btn-secondary" routerLink="/car">Cancel</button>
+            <button class="btn btn-primary">Save</button>
           </div>
         </div>
       </form>

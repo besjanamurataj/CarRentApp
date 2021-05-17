@@ -1,3 +1,5 @@
+import { CoreModule } from './../core/core.module';
+import { SharedModule } from './../shared/shared.module';
 import { AccountRoutingModule } from './account-routing.module';
 
 import { NgModule } from '@angular/core';
@@ -13,7 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    AccountRoutingModule
+    AccountRoutingModule,
+    SharedModule,
+    CoreModule
   ]
 })
 export class AccountModule { }

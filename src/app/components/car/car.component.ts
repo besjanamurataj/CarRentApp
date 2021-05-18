@@ -1,3 +1,4 @@
+import { CarService } from './../../core/service/car.service';
 import { SpinnerOverlayService } from './../../core/service/spinner-overlay.service';
 import { ToastrService } from 'src/app/core/service/toastr.service';
 import { Component, OnInit } from '@angular/core';
@@ -8,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./car.component.css'],
 })
 export class CarComponent implements OnInit {
-  constructor(
+  constructor(private carService:CarService
   ) {}
 
   ngOnInit(): void {
-
+ this.carService.getCar().subscribe(data=>{
+   console.log(data);
+ })
   }
 }

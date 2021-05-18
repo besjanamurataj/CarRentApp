@@ -1,3 +1,4 @@
+import { ModelService } from './../../core/service/model.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModelComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modelService:ModelService) { }
 
   ngOnInit(): void {
+
   }
+
+  getFuelType(id){
+    this.modelService.getElementById(id).subscribe(data=>{
+      console.log(data);
+    })
+  }
+
+
 
 }

@@ -1,3 +1,4 @@
+import { CarService } from './../../../core/service/car.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Car } from 'src/app/core/models/car';
@@ -10,13 +11,13 @@ import { Car } from 'src/app/core/models/car';
 export class AddEditCarComponent implements OnInit {
 car:Car;
 carForm:FormGroup;
-  constructor(private formBuilder:FormBuilder) { }
+  constructor(private formBuilder:FormBuilder, private carService:CarService) { }
 
   ngOnInit(): void {
     this.carForm = this.formBuilder.group({
       carNumbers: ['', Validators.required],
       brand: ['', Validators.required],
-      fuelType: ['', Validators.required],
+      // fuelType: ['', Validators.required],
       number: ['', Validators.required],
       model: ['', Validators.required],
       transmisionType: ['', Validators.required],
@@ -66,4 +67,10 @@ carForm:FormGroup;
     return this.carForm.get('description') as FormControl;
   }
 
+
+  saveCar(){
+   this.carService.createCar(this.carForm.value).subscribe(data =>{
+     console.log(data);
+   })
+  }
 }

@@ -26,8 +26,8 @@ export class FuelTypeService {
       return this._http.put<FuelType>(`${baseUrl + '/edit/'}/${id}`,body);
     }
 
-  delete(id){
-      return this._http.delete<FuelType>(`${baseUrl+ '/delete/'}/${id}`);
+  delete(id:string){
+      return this._http.delete<FuelType>(`${baseUrl + '/delete/'}/${id}`);
   }
 
   getElementById(id){

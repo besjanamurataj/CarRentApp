@@ -1,44 +1,31 @@
+<app-card>
+  <span slot="start"><h2> Add Model</h2></span>
+  <div class="container">
+    <form action="" [formGroup]="modelForm">
+      <label for=""> Enter a name </label>
+      <input type="text" class="form-control" formControlName="name" />
+      <div
+        *ngIf="name.invalid && (name.dirty || name.touched)"
+        class="text-danger"
+      >
+        <div *ngIf="name.errors.required">Name is required.</div>
+      </div>
 
-  <app-card title="Add a Model">
-    <div class="container">
-      <form action="" [formGroup] ="modelForm">
+      <label for=""> Enter a brand </label>
+      <input formControlName="brand" type="text" class="form-control" />
+      <div
+        *ngIf="brand.invalid && (brand.dirty || brand.touched)"
+        class="text-danger"
+      >
+        <div *ngIf="brand.errors.required">Brand is required.</div>
+      </div>
 
-
-            <label for=""> Enter a name </label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="name"
-            />
-            <div
-            *ngIf="name.invalid && (name.dirty || name.touched)"
-            class="text-danger"
-          >
-            <div *ngIf="name.errors.required"> CarNumber is required.</div>
-          </div>
-
-            <label for=""> Enter a brand </label>
-            <input
-               formControlName="brand"
-              type="text"
-              class="form-control"
-
-            />
-            <div
-            *ngIf="brand.invalid && (brand.dirty || brand.touched)"
-            class="text-danger"
-          >
-            <div *ngIf="brand.errors.required"> CarNumber is required.</div>
-          </div>
-
-
-          <div class="row mt-3">
-            <div class="col-md-12">
-              <button class="btn btn-secondary" routerLink ="/model">Cancel</button>
-              <button class="btn btn-primary"> Save</button>
-            </div>
-          </div>
-
-      </form>
-    </div>
-  </app-card>
+      <div class="row mt-3">
+        <div class="col-md-12">
+          <button class="btn btn-secondary" routerLink="/model">Cancel</button>
+          <button class="btn btn-primary" (click)="save()">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</app-card>

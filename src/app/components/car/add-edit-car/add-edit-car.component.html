@@ -1,24 +1,10 @@
 <div class="container">
-  <app-card title="Add or edit a Car">
+  <app-card>
+    <span slot="start"><h2>Add User</h2></span>
     <div class="container">
       <form [formGroup]="carForm">
         <div class="row">
-          <div class="col-sm-4">
-            <label for="" class="form-label"> Enter a CarNumber </label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="carNumbers"
-              autocomplete="off"
-            />
-             <div
-            *ngIf="carNumbers.invalid && (carNumbers.dirty || carNumbers.touched)"
-            class="text-danger"
-          >
-            <div *ngIf="carNumbers.errors.required"> CarNumber is required.</div>
-          </div>
-          </div>
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <label for="" class="form-label"> Enter a brand </label>
             <input
               class="form-control"
@@ -31,28 +17,19 @@
             <div *ngIf="brand.errors.required"> Brand is required.</div>
           </div>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <label for="" class="form-label"> Enter a fuelType</label>
             <select name="" class="form-control" id="category">
               <option selected disabled value="">Choose...</option>
               <option></option>
             </select>
           </div>
+
         </div>
 
         <div class="row">
-          <div class="col-sm-4">
-            <label for="" class="form-label"> Enter a number </label>
-            <input class="form-control" formControlName="number" />
-           <div
-              *ngIf="number.invalid && (number.dirty || number.touched)"
-              class="text-danger"
-            >
-               <div *ngIf="number.errors.required">Number is required.</div>
-            </div>
-          </div>
 
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <label for="" class="form-label"> Enter a model</label>
             <input
               class="form-control"
@@ -62,11 +39,11 @@
             *ngIf="model.invalid && (model.dirty || model.touched)"
             class="text-danger"
           >
-             <div *ngIf="model.errors.required">Model is required.</div>
+             <div *ngIf="model.errors.required">Model is required *.</div>
           </div>
           </div>
 
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <label for="" class="form-label"> Enter a transmisionType</label>
             <input
               type="text"
@@ -77,30 +54,48 @@
             *ngIf="transmisionType.invalid && (transmisionType.dirty || transmisionType.touched)"
             class="text-danger"
           >
-             <div *ngIf="transmisionType.errors.required">TransmisionType is required.</div>
+             <div *ngIf="transmisionType.errors.required">TransmisionType is required *.</div>
           </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-sm-4">
-            <label for="" class="form-label"> Enter a numberOfDoors </label>
-            <input
+          <div class="col-sm-6">
 
-              type="text"
-              class="form-control"
+              <label for="" class="form-label"> Enter a number </label>
+              <input class="form-control" formControlName="number" />
+             <div
+                *ngIf="number.invalid && (number.dirty || number.touched)"
+                class="text-danger"
+              >
+                 <div *ngIf="number.errors.required">Number is required*.</div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label for="" class="form-label"> Enter a numberOfDoors </label>
+              <input
 
-              formControlName="numberOfDoors"
-            />
-            <div
-            *ngIf="numberOfDoors.invalid && (numberOfDoors.dirty || numberOfDoors.touched)"
-            class="text-danger"
-          >
-             <div *ngIf="numberOfDoors.errors.required">Number is required.</div>
+                type="text"
+                class="form-control"
+
+                formControlName="numberOfDoors"
+              />
+              <div
+              *ngIf="numberOfDoors.invalid && (numberOfDoors.dirty || numberOfDoors.touched)"
+              class="text-danger"
+            >
+               <div *ngIf="numberOfDoors.errors.required">Number is required *.</div>
+            </div>
+            </div>
+
           </div>
-          </div>
 
-          <div class="col-sm-4">
+
+
+        <div class="row">
+
+
+          <div class="col-sm-6">
             <label for="" class="form-label"> Enter a carCapacity</label>
             <input
 
@@ -113,11 +108,11 @@
             *ngIf="carCapacity.invalid && (carCapacity.dirty || carCapacity.touched)"
             class="text-danger"
           >
-             <div *ngIf="carCapacity.errors.required">CarCapacity is required.</div>
+             <div *ngIf="carCapacity.errors.required">CarCapacity is required *.</div>
           </div>
 
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <label for="" class="form-label"> Enter a carColor</label>
             <input
               type="text"
@@ -128,13 +123,14 @@
             *ngIf="carColor.invalid && (carColor.dirty || carColor.touched)"
             class="text-danger"
           >
-             <div *ngIf="carColor.errors.required">CarColor is required.</div>
+             <div *ngIf="carColor.errors.required">CarColor is required *.</div>
           </div>
           </div>
         </div>
 
+
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <label for="" class="form-label"> Enter a priceForDay</label>
             <input
               type="text"
@@ -145,11 +141,11 @@
             *ngIf="priceForDay.invalid && (priceForDay.dirty || priceForDay.touched)"
             class="text-danger"
           >
-             <div *ngIf="priceForDay.errors.required">CarColor is required.</div>
+             <div *ngIf="priceForDay.errors.required">CarColor is required *.</div>
           </div>
           </div>
 
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <label for="" class="form-label"> Enter a CarLocation</label>
             <input
 
@@ -161,11 +157,11 @@
             *ngIf="carLocation.invalid && (carLocation.dirty || carLocation.touched)"
             class="text-danger"
           >
-             <div *ngIf="carLocation.errors.required">CarLocation is required.</div>
+             <div *ngIf="carLocation.errors.required">CarLocation is required *.</div>
           </div>
 
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <label for="" class="form-label"> Enter a Description</label>
             <input
               type="text"
@@ -179,7 +175,7 @@
         <div class="row mt-3">
           <div class="col-md-12">
             <button class="btn btn-secondary" routerLink="/car">Cancel</button>
-            <button class="btn btn-primary">Save</button>
+            <button class="btn btn-primary"[disabled] ="carForm.invalid" (click)="saveCar()">Save</button>
           </div>
         </div>
       </form>

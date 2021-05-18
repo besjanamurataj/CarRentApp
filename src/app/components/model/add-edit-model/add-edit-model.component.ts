@@ -1,3 +1,4 @@
+import { ModelService } from './../../../core/service/model.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddEditModelComponent implements OnInit {
  modelForm:FormGroup;
-  constructor(private formBuilder:FormBuilder) { }
+  constructor(private formBuilder:FormBuilder, private modelService: ModelService) { }
 
   ngOnInit(): void {
    this.modelForm = this.formBuilder.group({
@@ -22,5 +23,13 @@ export class AddEditModelComponent implements OnInit {
   }
   get name():FormControl{
     return this.modelForm.get('name') as FormControl
+  }
+
+
+  save(){
+    this.modelService.createModel(this.modelForm.value).subscribe((data)=>{
+           console.log(this.modelForm.value);
+    })
+
   }
 }

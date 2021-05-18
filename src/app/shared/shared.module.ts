@@ -1,3 +1,4 @@
+import { ConfirmationService } from './confirmation/confirmation.service';
 import { CardComponent } from './card/card.component';
 import { ToastrComponent } from './toastr/toastr.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
@@ -13,6 +14,6 @@ import { SpinnerOverlayComponent } from './spinner-overlay/spinner-overlay.compo
   imports: [
     CommonModule
   ],
-  exports:[CardComponent,ToastrComponent,SpinnerOverlayComponent]
+  exports:[CardComponent,ToastrComponent,SpinnerOverlayComponent,ConfirmationComponent,]
 })
 export class SharedModule { }

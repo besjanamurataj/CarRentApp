@@ -13,3 +13,9 @@ button.btn.btn-primary {
  label{
    text-align: center;
  }
+ h3{
+   text-align: center;
+ }
+ .text-danger{
+  font-size: small;
+}

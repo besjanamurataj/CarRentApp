@@ -16,3 +16,9 @@ button.btn.btn-primary.fueltype {
 button.btn.btn-primary {
   margin-left: 6px;
 }
+.text-danger{
+  font-size: small;
+}
+h2{
+  text-align: center;
+}

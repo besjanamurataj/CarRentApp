@@ -1,3 +1,4 @@
+import { AccountService } from './../../core/service/account.service';
 import { ToastrService } from 'src/app/core/service/toastr.service';
 import { SpinnerOverlayService } from './../../core/service/spinner-overlay.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,13 +13,14 @@ import { MESSAGE_INSERT_PASSWORD, MESSAGE_INSERT_USERNAME, MESSAGE_VALID_PASSWOR
 })
 export class LoginComponent implements OnInit {
    loginForm:FormGroup;
-  constructor(private formBuilder:FormBuilder,private router:Router, private spinner:SpinnerOverlayService, private toastr:ToastrService) { }
+  constructor(private formBuilder:FormBuilder,private router:Router, private spinner:SpinnerOverlayService, private toastr:ToastrService, private accoutService:AccountService) { }
 
   ngOnInit(): void {
 
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', [Validators.required,Validators.minLength(6)]],
+      password: ['', Validators.required],
+      // password: ['', [Validators.required,Validators.minLength(6)]],
     });
 
   }
@@ -33,16 +35,22 @@ export class LoginComponent implements OnInit {
       this.toastr.error(MESSAGE_INSERT_PASSWORD);
       return;
     }
-  if(this.password.hasError('minlength')){
-    this.toastr.error( MESSAGE_VALID_PASSWORD);
-    return;
-  }
+  // if(this.password.hasError('minlength')){
+  //   this.toastr.error( MESSAGE_VALID_PASSWORD);
+  //   return;
+  // }
 
+
+   this.accoutService.login(this.username.value, this.password.value).subscribe(
+     data =>{
+       console.log(data);
+     }
+   )
 
 
     // this.spinner.show();
     console.log(this.loginForm.value);
-    this.router.navigate(['/car']);
+    // this.router.navigate(['/car']);
   }
 
 

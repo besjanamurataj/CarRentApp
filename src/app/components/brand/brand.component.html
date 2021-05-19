@@ -1,5 +1,5 @@
 <app-card>
-  <span slot="start"><h2>Fuel Type List</h2></span>
+  <span slot="start"><h2>Brand List</h2></span>
   <a routerLink="add" class="btn btn-sm btn-success mb-2">Add a FuelType</a>
   <table class="table table-striped">
     <thead>
@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of fuelType">
+       <tr *ngFor="let item of brand">
         <td>{{ item.name }}</td>
         <td style="white-space: nowrap">
           <a routerLink="edit/{{ item.id }}" class="btn btn-sm btn-primary m-2"
@@ -17,7 +17,7 @@
           >
           <a
             type="button"
-            (click)="openConfirm(item.id)"
+            (click)="openConfirm(item)"
             class="btn btn-sm btn-danger mt-2"
             >Delete</a
           >

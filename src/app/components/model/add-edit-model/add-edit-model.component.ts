@@ -1,6 +1,11 @@
+import { Router, ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { ToastrService } from './../../../core/service/toastr.service';
+import { BrandService } from 'src/app/core/service/brand.service';
 import { ModelService } from './../../../core/service/model.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Brand } from 'src/app/core/models/brand';
 
 
 @Component({
@@ -10,13 +15,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddEditModelComponent implements OnInit {
  modelForm:FormGroup;
-  constructor(private formBuilder:FormBuilder, private modelService: ModelService) { }
+ brandArr:Brand;
+  constructor(private formBuilder:FormBuilder, private modelService: ModelService, private brandService:BrandService,
+    private toastr:ToastrService, private title:Title, private router:Router, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
    this.modelForm = this.formBuilder.group({
      brand:['',Validators.required],
      name:['',Validators.required]
    })
+   this.getListBrand();
   }
   get brand():FormControl{
     return this.modelForm.get('brand') as FormControl
@@ -29,7 +37,17 @@ export class AddEditModelComponent implements OnInit {
   save(){
     this.modelService.createModel(this.modelForm.value).subscribe((data)=>{
            console.log(this.modelForm.value);
+           this.router.navigate(['/model'], { relativeTo: this.route });
+           this.toastr.success('Add successfull')
     })
 
+  }
+  getListBrand(){
+    this.brandService.getAll().subscribe(
+      data =>{
+        this.brandArr = data;
+        console.log(this.brandArr)
+      }
+    )
   }
 }

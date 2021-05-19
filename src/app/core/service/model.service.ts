@@ -29,4 +29,8 @@ export class ModelService {
    getListById(id){
      return this.http.get(`${baseUrl+ '/list/'}/${id}`)
    }
+
+
+
+
 }

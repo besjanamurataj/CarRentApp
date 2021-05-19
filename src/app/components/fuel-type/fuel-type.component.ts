@@ -19,20 +19,23 @@ export class FuelTypeComponent implements OnInit {
   ngOnInit(): void {
     this.getFuel();
   }
-  openConfirm(post) {
+
+  openConfirm(id) {
     this.confirmationService
       .confirm('Confirmation', 'Are you sure to delete?')
       .then((confirmed) => {
         if (confirmed) {
-          this.deletePost(post);
+          this.deletePost(id);
         }
       });
   }
-  deletePost(item) {
-    const index = this.fuel.indexOf(item);
-    this.fuel.splice(index,1)
-    this.fuelService.delete(item.id).subscribe(el =>{
+  deletePost(id) {
 
+    this.fuelService.delete(id).subscribe(el =>{
+      // const index = this.fuel.indexOf(item);
+      // this.fuel.splice(index,1);
+      this.toastrService.success('DELETE');
+       this.getFuel();
     },
     (error)=> {
       this.toastrService.error( 'MESSAGE_ERROR');

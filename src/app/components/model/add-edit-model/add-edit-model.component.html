@@ -12,7 +12,11 @@
       </div>
 
       <label for=""> Enter a brand </label>
-      <input formControlName="brand" type="text" class="form-control" />
+      <select   class="form-control" formControlName="brand"
+            >
+            <option selected disabled value="">Choose...</option>
+            <option *ngFor="let brand of brandArr " [value]="bran?.id"> {{brand.name}}</option>
+          </select>
       <div
         *ngIf="brand.invalid && (brand.dirty || brand.touched)"
         class="text-danger"
@@ -23,7 +27,7 @@
       <div class="row mt-3">
         <div class="col-md-12">
           <button class="btn btn-secondary" routerLink="/model">Cancel</button>
-          <button class="btn btn-primary" (click)="save()">Save</button>
+          <button class="btn btn-primary" [disabled] ="modelForm.invalid" (click)="save()">Save</button>
         </div>
       </div>
     </form>

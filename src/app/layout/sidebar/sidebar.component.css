@@ -1,61 +1,49 @@
-.wrapper {
+
+.page-container{
+  /* display:flex; */
+  height: 100%;
+  background:rgb(253, 254, 255) ;
+}
+/* .sidebar {
+  width: 300px;
+  height: 100%;
+  background: #f0f2f5;
+
+} */
+.sidebar {
+  width: 300px;
+  /* height: 100%; */
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 48px 0 0;
+  box-shadow: inset -1px 0 0 rgb(0 0 0 / 10%);
+}
+.list-items{
+   padding-top: 10px;
+}
+.list-item{
+  font-size:20px;
+  color:rgb(19, 18, 18);
+  padding:  10px 34px;
+  font-family:'Roboto';
+  position: relative;
+
+  /* align-items: center;
+  display: flex; */
   display: flex;
-  align-items: stretch;
-  perspective: 1500px;
+  text-align: -webkit-match-parent;
+
+}
+ .list-item.active{
+  color: rgb(141, 190, 190);
 }
 
-#sidebar {
-  min-width: 250px;
-  max-width: 250px;
-  background: #7386D5;
-  color: #fff;
-  transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
-  transform-origin: center left; /* Set the transformed position of sidebar to center left side. */
+a{
+  color: white;
 }
-
-#sidebar.active {
-  margin-left: -250px;
-  transform: rotateY(100deg); /* Rotate sidebar vertically by 100 degrees. */
-}
-
-
-@media (max-width: 768px) {
-  /* Reversing the behavior of the sidebar:
-     it'll be rotated vertically and off canvas by default,
-     collapsing in on toggle button click with removal of
-     the vertical rotation.   */
-  #sidebar {
-      margin-left: -250px;
-      transform: rotateY(100deg);
-  }
-  #sidebar.active {
-      margin-left: 0;
-      transform: none;
-  }
-
-  /* Reversing the behavior of the bars:
-     Removing the rotation from the first,
-     last bars and reappear the second bar on default state,
-     and giving them a vertical margin */
-  #sidebarCollapse span:first-of-type,
-  #sidebarCollapse span:nth-of-type(2),
-  #sidebarCollapse span:last-of-type {
-      transform: none;
-      opacity: 1;
-      margin: 5px auto;
-  }
-
-  /* Removing the vertical margin and make the first and last bars rotate again when the sidebar is open, hiding the second bar */
-  #sidebarCollapse.active span {
-      margin: 0 auto;
-  }
-  #sidebarCollapse.active span:first-of-type {
-      transform: rotate(45deg) translate(2px, 2px);
-  }
-  #sidebarCollapse.active span:nth-of-type(2) {
-      opacity: 0;
-  }
-  #sidebarCollapse.active span:last-of-type {
-      transform: rotate(-45deg) translate(1px, -1px);
-  }
+.page-content-container{
+   padding: 120px;
 }

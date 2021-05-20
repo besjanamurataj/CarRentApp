@@ -1,3 +1,4 @@
+import { AddModel } from './../models/AddModels';
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -12,7 +13,7 @@ export class ModelService {
 
   constructor(private http:HttpClient) {
    }
-   createModel(model:Model){
+   createModel(model:AddModel){
    return this.http.post(baseUrl +'/add', model);
    }
    deleteModel(id:string){

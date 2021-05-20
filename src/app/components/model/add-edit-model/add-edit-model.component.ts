@@ -1,3 +1,4 @@
+import { AddModel } from './../../../core/models/AddModels';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { ToastrService } from './../../../core/service/toastr.service';
@@ -15,7 +16,8 @@ import { Brand } from 'src/app/core/models/brand';
 })
 export class AddEditModelComponent implements OnInit {
  modelForm:FormGroup;
- brandArr:Brand;
+ brandArr:Brand[] =[];
+ model:AddModel
   constructor(private formBuilder:FormBuilder, private modelService: ModelService, private brandService:BrandService,
     private toastr:ToastrService, private title:Title, private router:Router, private route:ActivatedRoute) { }
 
@@ -36,11 +38,16 @@ export class AddEditModelComponent implements OnInit {
 
   save(){
     this.modelService.createModel(this.modelForm.value).subscribe((data)=>{
-           console.log(this.modelForm.value);
+      console.log(data);
+          //  console.log(this.modelForm.value);
            this.router.navigate(['/model'], { relativeTo: this.route });
            this.toastr.success('Add successfull')
     })
 
+  }
+
+  getModel(){
+  //  this.modelService.getListById()
   }
   getListBrand(){
     this.brandService.getAll().subscribe(
@@ -50,4 +57,6 @@ export class AddEditModelComponent implements OnInit {
       }
     )
   }
+
+
 }

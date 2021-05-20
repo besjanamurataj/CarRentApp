@@ -13,21 +13,19 @@ export class FuelTypeService {
   constructor(private _http:HttpClient) { }
 
 
-  getFuelType(){
-    return this._http.get<FuelType>(baseUrl+'/fueltypes/');
+  getFuelType():Observable<FuelType[]>{
+    return this._http.get<FuelType[]>(baseUrl+'/fueltypes/');
   }
-
-
   create(fuelType):Observable<FuelType>{
-    return this._http.post<FuelType>(baseUrl + '/add/',fuelType);
+    return this._http.post<FuelType>(baseUrl +'/add/',fuelType);
   }
 
     update(id, body):Observable<FuelType>{
-      return this._http.put<FuelType>(`${baseUrl + '/edit/'}/${id}`,body);
+      return this._http.put<FuelType>(`${baseUrl +'/edit/'}/${id}`,body);
     }
 
   delete(id:string){
-      return this._http.delete<FuelType>(`${baseUrl + '/delete/'}/${id}`);
+      return this._http.delete<FuelType>(`${baseUrl +'/delete/'}/${id}`);
   }
 
   getElementById(id){

@@ -8,11 +8,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginInterceptor } from './core/interceptor/login.interceptor';
+import { TransmisionTypeComponent } from './components/transmision-type/transmision-type.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    TransmisionTypeComponent,
 
   ],
   imports: [

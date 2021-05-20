@@ -1,0 +1,17 @@
+nav{
+  background-color: black;
+}
+button{
+ margin-left: auto;
+}
+.navbar-nav{
+  margin-left: 94%;
+}
+a{
+  color:white;
+
+}
+a:hover{
+  color: white;
+
+}

@@ -1,34 +1,15 @@
-<div class="container-fluid">
-  <div class="row flex-nowrap">
-    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-      <div
-        class="
-          d-flex
-          flex-column
-          align-items-center align-items-sm-start
-          px-3
-          pt-2
-          text-white
-          min-vh-100
-        "
-      >
-        <ul
-          class="
-            nav nav-pills
-            flex-column
-            mb-sm-auto mb-0
-            align-items-center align-items-sm-start
-          "
-          id="menu"
-        >
-          <li></li>
-          <li class="nav-item" *ngFor="let item of items">
-            <a class="nav-link align-middle px-0" [routerLink]="item.link">
-              {{ item.label }}
-            </a>
-          </li>
-        </ul>
+<div class="page-container">
+  <div class="sidebar">
+    <div class="list-items" >
+      <div *ngFor="let item of items">
+        <a class="list-item" [routerLink]="item.link" routerLinkActive ="active">
+          {{ item.label }}
+      </a>
       </div>
     </div>
   </div>
+  <div class="page-content-container">
+    <router-outlet></router-outlet>
+  </div>
+
 </div>

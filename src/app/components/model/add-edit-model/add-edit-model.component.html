@@ -14,8 +14,8 @@
       <label for=""> Enter a brand </label>
       <select   class="form-control" formControlName="brand"
             >
-            <option selected disabled value="">Choose...</option>
-            <option *ngFor="let brand of brandArr " [value]="bran?.id"> {{brand.name}}</option>
+            <option selected  value="">Choose...</option>
+            <option *ngFor="let brand of brandArr "[value]="brandId"> {{brand.name}}  </option>
           </select>
       <div
         *ngIf="brand.invalid && (brand.dirty || brand.touched)"

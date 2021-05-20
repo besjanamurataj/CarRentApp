@@ -1,12 +1,12 @@
 import { SidebarItems } from "./sidebar-item";
 
 export const items:Array<SidebarItems> =[
+  //  {
+  //    link:'login',
+  //    label:'Dashboard'
+  //  },
    {
-     link:'login',
-     label:'Dashboard'
-   },
-   {
-    link:'/fulltype',
+    link:'/fueltype',
     label:'Fuel Type',
   },
   {
@@ -16,6 +16,10 @@ export const items:Array<SidebarItems> =[
   {
     link:'/car',
     label:'Car',
+  },
+  {
+    link:'/brand',
+    label:'Brand',
   }
 
 ]

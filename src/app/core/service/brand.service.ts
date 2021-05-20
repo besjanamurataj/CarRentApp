@@ -12,8 +12,8 @@ const baseUrl = `${environment.brandApi}`;
 export class BrandService {
   constructor(private _http: HttpClient) {}
 
-  getAll(): Observable<Brand> {
-    return this._http.get<Brand>(baseUrl);
+  getAll(): Observable<Brand[]> {
+    return this._http.get<Brand[]>(baseUrl);
   }
 
   create(brand: Brand): Observable<Brand> {

@@ -20,8 +20,8 @@ import { Brand } from 'src/app/core/models/brand';
   styleUrls: ['./brand.component.css'],
 })
 export class BrandComponent implements OnInit {
-  brand: Brand;
-  brandArray: Brand[] = [];
+
+  brand: Brand [] = [];
   constructor(
     private brandService: BrandService,
     private confirmationService: ConfirmationService,
@@ -41,20 +41,17 @@ export class BrandComponent implements OnInit {
       });
   }
   deleteBrand(item) {
+    const index = this.brand.indexOf(item)
+    this.brand.splice(index,1);
+  this.brandService.delete(item.id).subscribe((data) => {
 
-
-
-    this.brandService.delete(item.id).subscribe((data) => {
-      const index = this.brandArray.indexOf(item)
-      this.brandArray.splice(index, 1);
-      // this.getBrand();
     });
   }
 
   getBrand() {
     this.brandService.getAll().subscribe((data) => {
       this.brand = data;
-      console.log(data);
+
     },
     (error) => {
       this.toastr.error('Please try agains later');

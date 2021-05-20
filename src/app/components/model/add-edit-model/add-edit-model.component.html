@@ -15,7 +15,7 @@
       <select   class="form-control" formControlName="brand"
             >
             <option selected  value="">Choose...</option>
-            <option *ngFor="let brand of brandArr "[value]="brandId"> {{brand.name}}  </option>
+            <option *ngFor="let brand of brandArr " [value]="brand.id"> {{brand.name}}  </option>
           </select>
       <div
         *ngIf="brand.invalid && (brand.dirty || brand.touched)"

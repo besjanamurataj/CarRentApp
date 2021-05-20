@@ -3,6 +3,7 @@ import { Brand } from './../models/brand';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { ReturnStatement } from '@angular/compiler';
 
 const baseUrl = `${environment.brandApi}`;
 
@@ -17,13 +18,16 @@ export class BrandService {
   }
 
   create(brand: Brand): Observable<Brand> {
-    return this._http.post<Brand>(baseUrl + '/add', brand);
+      return this._http.post<Brand>(baseUrl,brand);
+    //return this._http.post<Brand>(baseUrl + '/add', brand);
   }
   delete(id) {
-    return this._http.delete(`${baseUrl + '/delete/'}/${id}`);
+    //return this._http.delete(`${baseUrl + '/delete/'}/${id}`);
+    return this._http.delete(`${baseUrl}/${id}`);
   }
   update(id, brand) {
-    return this._http.put<Brand>(`${baseUrl + '/edit/'}/${id}`, brand);
+    return this._http.put(`${baseUrl}/${id}`, brand);
+   // return this._http.put<Brand>(`${baseUrl + '/edit/'}/${id}`, brand);
   }
   getElementById(id) {
     return this._http.delete<Brand>(`${baseUrl}/${id}`);

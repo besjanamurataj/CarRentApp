@@ -1,3 +1,4 @@
+import { ModelComponent } from './components/model/model.component';
 import { PageNotFoundComponent } from './layout/page-not-found/page-not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -26,6 +27,7 @@ const routes: Routes = [
   },
   {path:'brand', loadChildren:()=> import('./components/brand/brand.module').then(m=> m.BrandModule)},
 
+  {path:'model/:id', component:ModelComponent},
   { path: 'login',component:LoginComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },

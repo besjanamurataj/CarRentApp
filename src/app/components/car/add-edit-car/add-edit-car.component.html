@@ -1,15 +1,16 @@
 <div class="container">
   <app-card>
-    <span slot="start"><h2>Add User</h2></span>
+    <span slot="start"><h2>Add Car</h2></span>
     <div class="container">
       <form [formGroup]="carForm">
         <div class="row">
           <div class="col-sm-6">
             <label for="" class="form-label"> Enter a brand </label>
-            <input
-              class="form-control"
-              formControlName="brand"
-            />
+            <select  #mySelect (change)="getModels(mySelect.value)" class="form-control" formControlName="brand"
+            >
+            <option selected  value="">Choose...</option>
+            <option *ngFor="let brand of brandArr "  [value]="brand.id"> {{brand.name}}  </option>
+          </select>
             <div
             *ngIf="brand.invalid && (brand.dirty || brand.touched)"
             class="text-danger"
@@ -21,7 +22,7 @@
             <label for="" class="form-label"> Enter a fuelType</label>
             <select name="" class="form-control" id="category">
               <option selected disabled value="">Choose...</option>
-              <option></option>
+              <option *ngFor="let brand of fuelArray " [value]="brand.id"> {{brand.name}}  </option>
             </select>
           </div>
 
@@ -31,10 +32,10 @@
 
           <div class="col-sm-6">
             <label for="" class="form-label"> Enter a model</label>
-            <input
-              class="form-control"
-              formControlName="model"
-            />
+            <select name="" class="form-control" id="category">
+              <option selected disabled value="">Choose...</option>
+              <option *ngFor="let model of modelsArr " [value]="model.id"> {{model.name}}  </option>
+            </select>
             <div
             *ngIf="model.invalid && (model.dirty || model.touched)"
             class="text-danger"
@@ -45,11 +46,10 @@
 
           <div class="col-sm-6">
             <label for="" class="form-label"> Enter a transmisionType</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="transmisionType"
-            />
+            <select name="" class="form-control" id="category">
+              <option selected disabled value="">Choose...</option>
+              <option></option>
+            </select>
              <div
             *ngIf="transmisionType.invalid && (transmisionType.dirty || transmisionType.touched)"
             class="text-danger"

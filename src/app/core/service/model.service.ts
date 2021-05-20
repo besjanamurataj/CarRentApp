@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { AddModel } from './../models/AddModels';
 
 import { HttpClient } from '@angular/common/http';
@@ -14,7 +15,8 @@ export class ModelService {
   constructor(private http:HttpClient) {
    }
    createModel(model:AddModel){
-   return this.http.post(baseUrl +'/add', model);
+  // return this.http.post(baseUrl +'/add', model);
+  return this.http.post(baseUrl, model);
    }
    deleteModel(id:string){
        return this.http.delete(`${baseUrl+ '/delete/'}/${id}`);
@@ -24,8 +26,8 @@ export class ModelService {
       return this.http.put(`${baseUrl+ '/edit/'}/${id}`,body);
 
    }
-   getElementById(id){
-     return this.http.get(`${baseUrl}/${id}`);
+   getElementById(id):Observable<Model>{
+     return this.http.get<Model>(`${baseUrl}/${id}`);
    }
    getListById(id){
      return this.http.get(`${baseUrl+ '/list/'}/${id}`)

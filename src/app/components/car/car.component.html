@@ -1,6 +1,6 @@
 <app-card>
   <span slot="start"><h2>Car</h2></span>
-    <a routerLink ="add" class="btn btn-sm btn-success mb-2">Add User</a>
+    <a routerLink ="add" class="btn btn-sm btn-success mb-2">Add Car</a>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -15,10 +15,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr *ngFor = "let car of car">
+          <td>{{car.id}}</td>
+          <td>{{car.author}}</td>
+          <td>{{car.title}}</td>
           <td style="white-space: nowrap">
             <a  class="btn btn-sm btn-primary m-2"
               >Edit</a

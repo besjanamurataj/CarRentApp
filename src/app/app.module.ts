@@ -8,15 +8,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginInterceptor } from './core/interceptor/login.interceptor';
-import { TransmisionTypeComponent } from './components/transmision-type/transmision-type.component';
-
+import { ErrorInterceptor } from './core/interceptor/error.interceptor';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TransmisionTypeComponent,
-
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,15 +20,11 @@ import { TransmisionTypeComponent } from './components/transmision-type/transmis
     CarModule,
     AccountModule,
     HttpClientModule,
-
-
-
-
-
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true}
-],
-  bootstrap: [AppComponent]
+    { provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

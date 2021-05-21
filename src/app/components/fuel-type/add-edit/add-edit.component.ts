@@ -10,6 +10,8 @@ import {
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { MESSAGE_ADD_ERROR, MESSAGE_ADD_FUELTYPE, MESSAGE_UPDATE_FUELTYPE } from '../fueltype.constant';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-add-edit',
@@ -60,19 +62,22 @@ export class AddEditComponent implements OnInit {
 
   createFuelType() {
      this.fuelService.create(this.fuelTypeForm.value).subscribe((data) => {
-       this.toastr.success('FuelType add ');
+       this.toastr.success( MESSAGE_ADD_FUELTYPE);
        this.router.navigate(['/fueltype'], { relativeTo: this.route });
        console.log(data);
+     }, (error)=>{
+       this.toastr.error( MESSAGE_ADD_ERROR)
      });
-    console.log('add succesfull')
+
 
   }
   updateFuelType() {
     this.fuelService.update(this.id,this.fuelTypeForm.value).subscribe((data)=>{
-      this.toastr.success('Edit succefull');
+      this.toastr.success( MESSAGE_UPDATE_FUELTYPE);
       this.router.navigate(['/fueltype'], { relativeTo: this.route });
 
-    })
-    console.log('edit')
+    }
+    )
+
   }
 }

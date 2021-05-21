@@ -7,6 +7,7 @@ import { ModelService } from './../../../core/service/model.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Brand } from 'src/app/core/models/brand';
+import { MESSAGE_ADD_MODEL, TITLE_MODEL } from '../model.constants';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class AddEditModelComponent implements OnInit {
      brand:['',Validators.required],
      name:['',Validators.required]
    })
+   this.title.setTitle(TITLE_MODEL);
    this.getListBrand();
   }
   get brand():FormControl{
@@ -41,7 +43,7 @@ export class AddEditModelComponent implements OnInit {
       console.log(data);
           //  console.log(this.modelForm.value);
            this.router.navigate(['/model'], { relativeTo: this.route });
-           this.toastr.success('Add successfull')
+           this.toastr.success(MESSAGE_ADD_MODEL)
     })
 
   }

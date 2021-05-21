@@ -46,16 +46,16 @@
 
           <div class="col-sm-6">
             <label for="" class="form-label"> Enter a transmisionType</label>
-            <select name="" class="form-control" id="category">
-              <option selected disabled value="">Choose...</option>
-              <option></option>
-            </select>
-             <div
+            <!-- <select name="" class="form-control" id="category"> -->
+              <!-- <option selected disabled value="">Choose...</option>
+              <option *ngFor="let transmision of transmisionsArr " [value]="model.id"></option> -->
+            <!-- </select> -->
+             <!-- <div
             *ngIf="transmisionType.invalid && (transmisionType.dirty || transmisionType.touched)"
             class="text-danger"
           >
              <div *ngIf="transmisionType.errors.required">TransmisionType is required *.</div>
-          </div>
+          </div> -->
           </div>
         </div>
 
@@ -175,7 +175,7 @@
         <div class="row mt-3">
           <div class="col-md-12">
             <button class="btn btn-secondary" routerLink="/car">Cancel</button>
-            <button class="btn btn-primary"[disabled] ="carForm.invalid" (click)="saveCar()">Save</button>
+            <button class="btn btn-primary" (click)="saveCar()">Save</button>
           </div>
         </div>
       </form>

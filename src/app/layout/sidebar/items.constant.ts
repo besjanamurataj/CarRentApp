@@ -1,10 +1,7 @@
 import { SidebarItems } from "./sidebar-item";
 
 export const items:Array<SidebarItems> =[
-  //  {
-  //    link:'login',
-  //    label:'Dashboard'
-  //  },
+
    {
     link:'/fueltype',
     label:'Fuel Type',
@@ -20,6 +17,10 @@ export const items:Array<SidebarItems> =[
   {
     link:'/brand',
     label:'Brand',
-  }
+  },
+    {
+      link:'/transmision',
+     label:'Transmitions'
+    },
 
 ]

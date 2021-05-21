@@ -26,7 +26,7 @@ const routes: Routes = [
       ),
   },
   {path:'brand', loadChildren:()=> import('./components/brand/brand.module').then(m=> m.BrandModule)},
-
+  {path:'transmision', loadChildren:()=> import('./components/transmision-type/transmision.module').then(m =>m.TransmisionModule)},
   {path:'model/:id', component:ModelComponent},
   { path: 'login',component:LoginComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' },

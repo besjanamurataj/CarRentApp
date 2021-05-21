@@ -1,8 +1,11 @@
+
+import { ConfirmationService } from './../../shared/confirmation/confirmation.service';
 import { CarService } from './../../core/service/car.service';
 import { SpinnerOverlayService } from './../../core/service/spinner-overlay.service';
 import { ToastrService } from 'src/app/core/service/toastr.service';
 import { Component, OnInit } from '@angular/core';
 import { Car } from 'src/app/core/models/car';
+import { MESSAGE_DELETE_CAR, MESSAGE_ERROR } from './car.constant';
 
 @Component({
   selector: 'app-car',
@@ -11,8 +14,11 @@ import { Car } from 'src/app/core/models/car';
 })
 export class CarComponent implements OnInit {
   car:Car [] =[];
-  constructor(private carService:CarService
+  myImage:string;
+  constructor(private carService:CarService, private confirmationService:ConfirmationService, private  toastrService:ToastrService
   ) {}
+
+
 
   ngOnInit(): void {
  this.carService.getCar().subscribe(data=>{
@@ -20,4 +26,23 @@ export class CarComponent implements OnInit {
    console.log(data);
  })
   }
+
+openConfirmation(car){
+  this.confirmationService
+  .confirm('Confirmation', 'Are you sure to delete?')
+  .then((confirmed) => {
+    if (confirmed) {
+      this.deleteCar(car);
+    }
+  });
+}
+ deleteCar(car){
+   const index = this.car.indexOf(car);
+   this.car.splice(index,1);
+   this.carService.deleteCar(car.id).subscribe(data =>{
+     this.toastrService.success(MESSAGE_DELETE_CAR )
+   }, (error) =>{
+      this.toastrService.error(MESSAGE_ERROR);
+   })
+ }
 }

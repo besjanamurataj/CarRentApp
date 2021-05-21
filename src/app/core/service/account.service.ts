@@ -26,7 +26,7 @@ login(username:string,password:string){
  return this.http.post<any>(`${environment.loginApi}`, { username, password })
  .pipe(map(user =>{
    if(user && user.token){
-     localStorage.setItem('',JSON.stringify(user))
+     localStorage.setItem('token',JSON.stringify(user))
    }
    return user;
  }))
@@ -34,9 +34,13 @@ login(username:string,password:string){
 }
 
 
+getToken(){
+  return localStorage.getItem('token')
+}
+
 
 logout(){
-       localStorage.removeItem('currentUser');
+       localStorage.removeItem('token');
        console.log('logout')
         this.currentUserSubject.next(null);
     }

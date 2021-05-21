@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 
 import { Brand } from 'src/app/core/models/brand';
+import { MESSAGE_DELETE_BRAND, MESSAGE_ERROR } from './brand.constant';
 
 @Component({
   selector: 'app-brand',
@@ -42,9 +43,9 @@ export class BrandComponent implements OnInit {
   }
   deleteBrand(item) {
     const index = this.brand.indexOf(item)
+   this.brandService.delete(item.id).subscribe((data) => {
     this.brand.splice(index,1);
-  this.brandService.delete(item.id).subscribe((data) => {
-
+    this.toastr.success(MESSAGE_DELETE_BRAND);
     });
   }
 
@@ -54,7 +55,7 @@ export class BrandComponent implements OnInit {
 
     },
     (error) => {
-      this.toastr.error('Please try agains later');
+      this.toastr.error(MESSAGE_ERROR);
     });
   }
 

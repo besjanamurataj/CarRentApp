@@ -1,9 +1,12 @@
 <app-card>
   <span slot="start"><h2>Car</h2></span>
-    <a routerLink ="add" class="btn btn-sm btn-success mb-2">Add Car</a>
+    <a routerLink ="add" class="btn btn-sm btn-success mb-2">Add </a>
     <table class="table table-striped">
       <thead>
         <tr>
+          <th style="width: 20%;">FuelType </th>
+          <th style="width: 20%;">NumberOfDoors </th>
+          <th style="width: 20%;">CarCapacity</th>
           <th style="width: 20%;">FuelType </th>
           <th style="width: 20%;">NumberOfDoors </th>
           <th style="width: 20%;">CarCapacity</th>
@@ -17,8 +20,13 @@
       <tbody>
         <tr *ngFor = "let car of car">
           <td>{{car.id}}</td>
-          <td>{{car.author}}</td>
-          <td>{{car.title}}</td>
+          <td>{{car.brandName}}</td>
+          <td>{{car.carColor}}</td>
+          <td>{{car.Capacity}}</td>
+          <td>{{car.carLocation}}</td>
+          <td>{{car.carNumber}}</td>
+          <td>{{car.carColor}}</td>
+          <td>{{car.description}}</td>
           <td style="white-space: nowrap">
             <a  class="btn btn-sm btn-primary m-2"
               >Edit</a

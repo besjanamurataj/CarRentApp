@@ -15,8 +15,8 @@ export class ModelService {
   constructor(private http:HttpClient) {
    }
    createModel(model:AddModel){
-  // return this.http.post(baseUrl +'/add', model);
-  return this.http.post(baseUrl, model);
+   return this.http.post(baseUrl +'/add', model);
+  //return this.http.post(baseUrl, model);
    }
    deleteModel(id:string){
        return this.http.delete(`${baseUrl+ '/delete/'}/${id}`);

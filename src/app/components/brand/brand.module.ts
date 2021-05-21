@@ -1,7 +1,6 @@
 
 import { SharedModule } from './../../shared/shared.module';
 import { AddEditBrandComponent } from './add-edit-brand/add-edit-brand.component';
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrandRoutingModule } from './brand-routing.module';

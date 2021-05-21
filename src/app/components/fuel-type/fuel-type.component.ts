@@ -4,6 +4,7 @@ import { ToastrService } from './../../core/service/toastr.service';
 import { ConfirmationService } from './../../shared/confirmation/confirmation.service';
 import { FuelTypeService } from './../../core/service/fuel-type.service';
 import { Component, OnInit } from '@angular/core';
+import { MESSAGE_DELETE_FUELTYPE, MESSAGE_ERROR } from './fueltype.constant';
 
 @Component({
   selector: 'app-fuel-type',
@@ -38,10 +39,10 @@ export class FuelTypeComponent implements OnInit {
       const index = this.fuelType.indexOf(item);
       console.log(index)
         this.fuelType.splice(index,1);
-      this.toastrService.success('DELETE');
+      this.toastrService.success(MESSAGE_DELETE_FUELTYPE);
     },
     (error)=> {
-      this.toastrService.error( 'MESSAGE_ERROR');
+      this.toastrService.error( MESSAGE_ERROR);
     })
 
   }

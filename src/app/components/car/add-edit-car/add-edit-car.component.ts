@@ -1,3 +1,6 @@
+import { ToastrService } from './../../../core/service/toastr.service';
+import { TrasmisionType } from './../../../core/models/transmisionType';
+import { TransmisiontypeService } from './../../../core/service/transmisiontype.service';
 import { FuelTypeService } from './../../../core/service/fuel-type.service';
 import { BrandService } from 'src/app/core/service/brand.service';
 import { CarService } from './../../../core/service/car.service';
@@ -8,6 +11,9 @@ import { Brand } from 'src/app/core/models/brand';
 import { FuelType } from 'src/app/core/models/fuelType';
 import { ModelService } from 'src/app/core/service/model.service';
 import { Model } from 'src/app/core/models/model';
+import { Title } from '@angular/platform-browser';
+import { MESSAGE_ADD_CAR, MESSAGE_ADD_ERROR, MESSAGE_ERROR, TITLE_CAR } from '../car.constant';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-add-edit-car',
@@ -19,11 +25,15 @@ car:Car;
 brandArr:Brand [] =[];
 fuelArray:FuelType [] =[];
 modelsArr:Model[] =[];
+transmisionsArr: TrasmisionType[] =[];
 carForm:FormGroup;
-  constructor(private formBuilder:FormBuilder, private carService:CarService, 
+  constructor(private formBuilder:FormBuilder, private carService:CarService,
     private fueltypeService:FuelTypeService,
     private modelService:ModelService,
-    private brandService:BrandService) { }
+    private brandService:BrandService,
+    private toastr:ToastrService,
+    private transmisionService:TransmisiontypeService,
+    private title:Title) { }
 
   ngOnInit(): void {
     this.carForm = this.formBuilder.group({
@@ -31,7 +41,7 @@ carForm:FormGroup;
       fuelType: ['', Validators.required],
       number: ['', Validators.required],
       model: ['', Validators.required],
-      transmisionType: ['', Validators.required],
+     // transmisionType: ['', Validators.required],
       numberOfDoors: ['', Validators.required],
       carCapacity: ['', Validators.required],
       carColor: ['', Validators.required],
@@ -40,6 +50,7 @@ carForm:FormGroup;
       description: [''],
 
     });
+    this.title.setTitle(TITLE_CAR);
     this.getListBrand();
     this.getFuelType();
   }
@@ -54,9 +65,6 @@ carForm:FormGroup;
   }
   get carColor():FormControl{
     return this.carForm.get('model') as FormControl;
-  }
-  get transmisionType():FormControl{
-    return this.carForm.get('transmisionType') as FormControl;
   }
   get numberOfDoors():FormControl{
     return this.carForm.get('numberOfDoors') as FormControl;
@@ -80,11 +88,15 @@ carForm:FormGroup;
 
   saveCar(){
   this.carService.createCar(this.carForm.value).subscribe(data =>{
+     console.log(this.carForm.value)
      console.log(data);
+     this.toastr.success(MESSAGE_ADD_CAR)
+   }, (error) =>{
+     this.toastr.error(MESSAGE_ADD_ERROR)
    })
   }
 
-  
+
 
   getListBrand(){
     this.brandService.getAll().subscribe(
@@ -111,10 +123,12 @@ getFuelType(){
   }
     )
 }
-// getFuelType(){
-//   this.fueltypeService.getFuelType().subscribe(data =>{
-//      this.fuelArray = data;
-//   }
-//     )
-// }
+ getTransmisionType(){
+   this.transmisionService.getAll().subscribe(data =>{
+     this.transmisionsArr = data;
+  }, (error)=>{
+    this.toastr.error(MESSAGE_ERROR);
+  }
+     )
+ }
 }

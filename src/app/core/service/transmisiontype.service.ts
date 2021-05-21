@@ -15,7 +15,7 @@ export class TransmisiontypeService {
        return this.http.get<TrasmisionType[]>(baseUrl+ '/transmisiontypes');
   }
 
-  create(trasmision:TrasmisionType){
+  create(trasmision:TrasmisionType):Observable<TrasmisionType>{
     return this.http.post<TrasmisionType>(baseUrl+'/add',trasmision);
 }
 

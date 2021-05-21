@@ -15,17 +15,12 @@ export class LoginInterceptor implements HttpInterceptor {
   constructor(private accountService:AccountService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-
-    const currentUser = this.accountService.currentUserValue;
-    const isLoggedIn = currentUser && currentUser.token;
-    const isApiUrl = request.url.startsWith(environment.loginApi);
-    if (isLoggedIn && isApiUrl) {
+      const token = this.accountService.getToken();
         request = request.clone({
             setHeaders: {
-                Authorization: `Bearer ${currentUser.token}`
+                Authorization: "Bearer" + token
             }
         });
-    }
 
     return next.handle(request);
 }

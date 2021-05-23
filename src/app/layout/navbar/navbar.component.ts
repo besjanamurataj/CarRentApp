@@ -16,6 +16,6 @@ export class NavbarComponent implements OnInit {
   logo(){
      this.accountService.logout();
 
-    this.router.navigate(['login']);
+    this.router.navigate(['/']);
   }
 }

@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, ,Validators.minLength(6)]],
        //password: ['', [Validators.required,Validators.minLength(6)]],
     });
+  
   }
 
   login() {
@@ -55,7 +56,8 @@ export class LoginComponent implements OnInit {
     this.accoutService
       .login(this.username.value, this.password.value)
       .subscribe((data) => {
-        //this.router.navigate(['/home/car']);
+        this.router.navigate(['/car']);
+        console.log(data);
 
       });
 

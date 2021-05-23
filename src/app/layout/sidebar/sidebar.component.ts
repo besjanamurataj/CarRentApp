@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
 import { items } from './items.constant';
 import { SidebarItems } from './sidebar-item';
 
@@ -8,8 +9,8 @@ import { SidebarItems } from './sidebar-item';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
-  collapse = false;
+  public sidebarShow: boolean = false;
+  navbarOpen = false;
 
 
 items:Array<SidebarItems> = items;
@@ -17,7 +18,9 @@ items:Array<SidebarItems> = items;
 
   ngOnInit(): void {
   }
- toggleSideBar(){
-   this.collapse =!this.collapse
- }
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
+  }
+
 }

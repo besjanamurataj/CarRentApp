@@ -9,20 +9,27 @@ import {
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
+
+const TOKEN_HEADER_KEY = 'x-access-token';
 @Injectable()
 export class LoginInterceptor implements HttpInterceptor {
 
   constructor(private accountService:AccountService) {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-      const token = this.accountService.getToken();
-        request = request.clone({
-            setHeaders: {
-                Authorization: "Bearer" + token
-            }
-        });
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    let authReq = req;
+    const token = this.accountService.getToken();
 
-    return next.handle(request);
+    if (token != null) {
+      authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) ,
+      setHeaders: {
+        Authorization: `Bearer ${ this.accountService.getToken()}`
+      }
+
+    });
+    }
+
+    return next.handle(authReq);
 }
 
 

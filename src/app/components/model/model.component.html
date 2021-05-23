@@ -6,27 +6,18 @@
       <thead>
           <tr>
               <th style="width: 30%">Name</th>
-              <th style="width: 30%">Brand</th>
               <th style="width: 20%"><a routerLink ="add" class="btn btn-sm btn-success mb-2">Add</a></th>
           </tr>
       </thead>
       <tbody>
-          <!-- <tr *ngFor="let item of fuelType"> -->
-              <!-- <td>{{item.name}}</td> -->
+           <tr *ngFor="let item of model"> 
+              <td>{{item.name}}</td> 
               <td style="white-space: nowrap">
-                  <!-- <a routerLink="edit/{{item.id}}" class="btn btn-sm btn-primary mr-1">Edit</a> -->
-                   <!-- <button  class="btn btn-sm btn-danger btn-delete-user"> -->
-                      <!-- <span *ngIf="user.isDeleting" class="spinner-border spinner-border-sm"></span> -->
-                      <!-- Delete -->
-                      <!-- <span *ngIf="!user.isDeleting">Delete</span> -->
-                  <!-- </button> -->
+                  <a routerLink="edit/{{item.id}}" class="btn btn-sm btn-primary mr-1">Edit</a> 
+                  <a  class="btn btn-sm btn-danger btn-delete-user ml-2"  (click) =" openConfirmation(item)"> 
+                   Delete 
+                  </a> 
               </td>
-          <!-- </tr> -->
-          <!-- <tr *ngIf="!users">
-              <td colspan="4" class="text-center">
-                  <span class="spinner-border spinner-border-lg align-center"></span>
-              </td>
-          </tr> -->
       </tbody>
   </table>
 </app-card>

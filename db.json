@@ -66,5 +66,11 @@
       "name": "vv",
       "id": 8
     }
+  ],
+  "transmision": [
+    {
+      "name": "besa",
+      "id": 1
+    }
   ]
 }

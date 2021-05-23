@@ -26,14 +26,10 @@ export class ModelService {
       return this.http.put(`${baseUrl+ '/edit/'}/${id}`,body);
 
    }
-   getElementById(id):Observable<Model>{
-     return this.http.get<Model>(`${baseUrl}/${id}`);
+   getElementById(id):Observable<Model[]>{
+     return this.http.get<Model[]>(`${baseUrl}/${id}`);
    }
-   getListById(id){
-     return this.http.get(`${baseUrl+ '/list/'}/${id}`)
+   getListById(id):Observable<Model>{
+     return this.http.get<Model>(`${baseUrl+ '/models'}/${id}`)
    }
-
-
-
-
 }

@@ -1,18 +1,24 @@
-<app-card>
+<app-card style="width: 700px;">
+
+ 
   <span slot="start"><h2>Car</h2></span>
+
+
+  <input #Image type="file" (change)="handleFileInput($event.target.files)"/>
+  <img width="100%" *ngIf="imageUrl" [src]="imageUrl" class="image">
     <a routerLink ="add" class="btn btn-sm btn-success mb-2">Add </a>
     <table class="table table-striped">
       <thead>
         <tr>
-          <th style="width: 20%;">FuelType </th>
-          <th style="width: 20%;">NumberOfDoors </th>
-          <th style="width: 20%;">CarCapacity</th>
-          <th style="width: 20%;">FuelType </th>
-          <th style="width: 20%;">NumberOfDoors </th>
-          <th style="width: 20%;">CarCapacity</th>
-          <!-- <th>PricePerDay </th>
-          <th>Description</th>
-          <th>ModelYear</th> -->
+          <td>FuelType </td>
+          <td>NumberOfDoors </td>
+          <td>CarCapacity</td>
+          <td>FuelType </td>
+          <td>NumberOfDoors </td>
+          <td>CarCapacity</td>
+           <td>PricePerDay </td>
+          <td>Description</td>
+          <td>ModelYear</td>
           <!-- <th style="width: 20%;">Model</th> -->
           <th style="width: 20%;"></th>
         </tr>
@@ -28,12 +34,12 @@
           <td>{{car.carColor}}</td>
           <td>{{car.description}}</td>
           <td style="white-space: nowrap">
-            <a  class="btn btn-sm btn-primary m-2"
+            <a  routerLink ="edit/:id" class="btn btn-sm btn-primary m-2"
               >Edit</a
             >
             <a
               type="button"
-              class="btn btn-sm btn-danger mt-2"
+              class="btn btn-sm btn-danger mt-2" (click) ="openConfirmation(car)"
               >Delete</a
             >
           </td>

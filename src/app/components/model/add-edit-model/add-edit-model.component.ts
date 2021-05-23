@@ -17,21 +17,25 @@ import { MESSAGE_ADD_MODEL, TITLE_MODEL } from '../model.constants';
 })
 export class AddEditModelComponent implements OnInit {
  modelForm:FormGroup;
+ id:string;
+ isAddModal : boolean;
  brandArr:Brand[] =[];
  model:AddModel
   constructor(private formBuilder:FormBuilder, private modelService: ModelService, private brandService:BrandService,
     private toastr:ToastrService, private title:Title, private router:Router, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
+    this.isAddModal = !this.id;
    this.modelForm = this.formBuilder.group({
-     brand:['',Validators.required],
+     brandId:['',Validators.required],
      name:['',Validators.required]
    })
    this.title.setTitle(TITLE_MODEL);
    this.getListBrand();
   }
-  get brand():FormControl{
-    return this.modelForm.get('brand') as FormControl
+  get brandId():FormControl{
+    return this.modelForm.get('brandId') as FormControl
   }
   get name():FormControl{
     return this.modelForm.get('name') as FormControl
@@ -39,17 +43,19 @@ export class AddEditModelComponent implements OnInit {
 
 
   save(){
-    this.modelService.createModel(this.modelForm.value).subscribe((data)=>{
-      console.log(data);
-          //  console.log(this.modelForm.value);
-           this.router.navigate(['/model'], { relativeTo: this.route });
-           this.toastr.success(MESSAGE_ADD_MODEL)
-    })
+ 
+    if(this.isAddModal)
+    {
+      this.createModel();
 
+    }
+    else{
+      this.updateModel();
+    }
   }
 
   getModel(){
-  //  this.modelService.getListById()
+  //  this.modelService.get
   }
   getListBrand(){
     this.brandService.getAll().subscribe(
@@ -60,5 +66,19 @@ export class AddEditModelComponent implements OnInit {
     )
   }
 
-
+  createModel(){
+    console.log(this.modelForm.value);
+    
+    this.modelService.createModel(this.modelForm.value).subscribe((data)=>{
+      console.log(data);
+          //  console.log(this.modelForm.value);
+           this.router.navigate(['/model'], { relativeTo: this.route });
+           this.toastr.success(MESSAGE_ADD_MODEL)
+    })
+  }
+updateModel(){
+  this.modelService.updateModel(this.id, this.modelForm.value).subscribe(data=>{
+    console.log(data);
+  })
+}
 }

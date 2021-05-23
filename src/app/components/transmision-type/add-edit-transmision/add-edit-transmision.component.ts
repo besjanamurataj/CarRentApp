@@ -51,12 +51,11 @@ export class AddEditTransmisionComponent implements OnInit {
     this.transmisionService.create(this.transmisionForm.value).subscribe(
       (data) => {
         console.log(data);
-        console.log(this.transmisionForm.value)
         this.toastr.success('Transmision add ');
         this.router.navigate(['/transmision'], { relativeTo: this.route });
       },
       (error) => {
-        this.toastr.error('Please try agains later');
+       // this.toastr.error('Please try agains later');
       }
     );
   }

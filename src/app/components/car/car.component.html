@@ -1,49 +1,49 @@
-<app-card style="width: 700px;">
+<app-card>
+  
 
- 
-  <span slot="start"><h2>Car</h2></span>
+<span slot="start"><h2>Car</h2></span>
 
-
-  <input #Image type="file" (change)="handleFileInput($event.target.files)"/>
-  <img width="100%" *ngIf="imageUrl" [src]="imageUrl" class="image">
-    <a routerLink ="add" class="btn btn-sm btn-success mb-2">Add </a>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <td>FuelType </td>
-          <td>NumberOfDoors </td>
-          <td>CarCapacity</td>
-          <td>FuelType </td>
-          <td>NumberOfDoors </td>
-          <td>CarCapacity</td>
-           <td>PricePerDay </td>
-          <td>Description</td>
-          <td>ModelYear</td>
-          <!-- <th style="width: 20%;">Model</th> -->
-          <th style="width: 20%;"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor = "let car of car">
-          <td>{{car.id}}</td>
-          <td>{{car.brandName}}</td>
-          <td>{{car.carColor}}</td>
-          <td>{{car.Capacity}}</td>
-          <td>{{car.carLocation}}</td>
-          <td>{{car.carNumber}}</td>
-          <td>{{car.carColor}}</td>
-          <td>{{car.description}}</td>
-          <td style="white-space: nowrap">
-            <a  routerLink ="edit/:id" class="btn btn-sm btn-primary m-2"
-              >Edit</a
-            >
-            <a
-              type="button"
-              class="btn btn-sm btn-danger mt-2" (click) ="openConfirmation(car)"
-              >Delete</a
-            >
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<input #Image type="file" (change)="handleFileInput($event.target.files)" />
+<img width="100%" *ngIf="imageUrl" [src]="imageUrl" class="image" />
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add </a>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>FuelType</th>
+        <th>NumberOfDoors</th>
+        <th>CarCapacity</th>
+        <th>FuelType</th>
+        <th>NumberOfDoors</th>
+        <th>CarCapacity</th>
+        <th>PricePerDay</th>
+        <th>Description</th>
+        <th>ModelYear</th>
+        <!-- <th style="width: 20%;">Model</th> -->
+        <th style="width: 20%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of car">
+        <td>{{ car.id }}</td>
+        <td>{{ car.brandName }}</td>
+        <td>{{ car.carColor }}</td>
+        <td>{{ car.Capacity }}</td>
+        <td>{{ car.carLocation }}</td>
+        <td>{{ car.carNumber }}</td>
+        <td>{{ car.carColor }}</td>
+        <td>{{ car.description }}</td>
+        <td style="white-space: nowrap">
+          <a routerLink="edit/:id" class="btn btn-sm btn-primary m-2">Edit</a>
+          <a
+            type="button"
+            class="btn btn-sm btn-danger mt-2"
+            (click)="openConfirmation(car)"
+            >Delete</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 </app-card>

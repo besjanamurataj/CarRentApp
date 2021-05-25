@@ -1,8 +1,13 @@
+<div id="wrapper">
+  <app-sidebar></app-sidebar>
+  <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+      <app-navbar></app-navbar>
+      <div class="container-fluid">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
 
-<app-navbar></app-navbar>
-
-  <app-sidebar></app-sidebar> 
-
-  <app-toastr></app-toastr>
-
-
+<app-toastr></app-toastr>

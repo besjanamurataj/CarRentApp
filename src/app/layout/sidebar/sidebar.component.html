@@ -1,15 +1,24 @@
-<div class="page-container">
-  <div class="sidebar">
-    <div class="list-items" >
-      <div *ngFor="let item of items">
-        <a class="list-item" [routerLink]="item.link" routerLinkActive ="active">
-          {{ item.label }}
+
+
+  <ul
+    class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+    id="accordionSidebar"
+  >
+    <span class="sidebar-brand d-flex align-items-center justify-content-center">
+      <span class="sidebar-brand-text">Dashboard</span>
+    </span>
+
+   
+    <hr class="sidebar-divider my-0" />
+
+
+    <li class="nav-item" *ngFor="let item of items">
+      <a class="nav-link" [routerLink]="item.link" routerLinkActive="active">
+        <span>{{ item.label }}</span>
       </a>
-      </div>
-    </div>
-  </div>
+      <hr class="sidebar-divider my-0" />
+    </li>
+  </ul>
 
-    <router-outlet></router-outlet>
-  
+ 
 
-</div>

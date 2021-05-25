@@ -11,6 +11,7 @@ import { SidebarItems } from './sidebar-item';
 export class SidebarComponent implements OnInit {
   public sidebarShow: boolean = false;
   navbarOpen = false;
+  status: boolean = false;
 
 
 items:Array<SidebarItems> = items;
@@ -21,6 +22,10 @@ items:Array<SidebarItems> = items;
 
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;
+  }
+  
+  clickEvent(){
+      this.status = !this.status;       
   }
 
 }

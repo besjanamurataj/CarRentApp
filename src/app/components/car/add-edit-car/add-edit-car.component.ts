@@ -107,9 +107,6 @@ export class AddEditCarComponent implements OnInit {
         console.log(this.carForm.value);
         console.log(data);
         this.toastr.success(MESSAGE_ADD_CAR);
-      },
-      (error) => {
-        this.toastr.error(MESSAGE_ADD_ERROR);
       }
     );
   }
